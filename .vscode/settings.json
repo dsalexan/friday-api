@@ -1,0 +1,13 @@
+{
+  "eslint.alwaysShowStatus": true,
+  "eslint.probe": [
+    "javascript",
+    "json",
+  ],
+  "editor.codeActionsOnSaveTimeout": 2500,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },  
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+}

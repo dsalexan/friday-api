@@ -1,0 +1,28 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        docker pull gcr.io/mvp-eplanck/eplanck-back:latest || exit 0
+  - name: gcr.io/cloud-builders/docker
+    timeout: 1200s
+    args:
+      [
+        'build',
+        '-f',
+        'Dockerfile',
+        '-t',
+        'gcr.io/mvp-eplanck/eplanck-back',
+        '--cache-from',
+        'gcr.io/mvp-eplanck/eplanck-back:latest',
+        '.',
+      ]
+timeout: 1200s
+images:
+  - gcr.io/mvp-eplanck/eplanck-back
+
+
+# gcloud builds submit --project "mvp-eplanck" --config=./cloud.yaml
+
+# gcloud beta run deploy cloud-run-name --region southamerica-east1 --project "mvp-eplanck" --image gcr.io/mvp-eplanck/eplanck-front --platform managed
